@@ -1,0 +1,114 @@
+* Home Assistant config
+Some configuration is done through secrets.yaml that is not public 
+** Initial setup
+#+BEGIN_SRC yaml :tangle configuration.yaml
+homeassistant:
+  name: Home
+  latitude: !secret ha_latitude
+  longitude: !secret ha_longitude
+  elevation: !secret ha_elevation
+  unit_system: metric
+  time_zone: !secret ha_time_zone
+  customize: !include customize.yaml
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+#+END_SRC
+** Customizations
+#+BEGIN_SRC customizations :tangle customize.yaml
+
+#+END_SRC
+** UI
+#+BEGIN_SRC yaml :tangle configuration.yaml
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+#+END_SRC
+** Sensors
+#+BEGIN_SRC yaml :tangle configuration.yaml
+# Sensors
+sensor:
+  # Weather prediction
+  - platform: yr
+#+END_SRC
+*** HomeKit
+Hey, Siri...
+#+BEGIN_SRC yaml :tangle configuration.yaml
+homekit:
+#+END_SRC
+*** Yeelight
+To make Yeelight work with Harmony Hub we need to make it discoverable as it was a Phillips Hue, therefore an [[https://www.home-assistant.io/components/emulated_hue/][emulated_hue]] component is setup.
+#+BEGIN_SRC yaml :tangle configuration.yaml
+emulated_hue:
+  exposed_domains:
+    - light
+#+END_SRC
+** Groups
+*** Setup
+#+BEGIN_SRC yaml :tangle configuration.yaml
+group: !include groups.yaml
+#+END_SRC
+*** Config
+#+BEGIN_SRC yaml :tangle groups.yaml
+#+END_SRC
+** Automations
+*** Setup
+#+BEGIN_SRC yaml :tangle configuration.yaml
+automation: !include automations.yaml
+#+END_SRC
+*** Config
+#+BEGIN_SRC yaml :tangle automations.yaml
+[]
+#+END_SRC
+** Scripts
+*** Setup
+#+BEGIN_SRC yaml :tangle configuration.yaml
+script: !include scripts.yaml
+#+END_SRC
+*** Config
+#+BEGIN_SRC yaml :tangle scripts.yaml
+
+#+END_SRC
