@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.4
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: sudo  apt-get update && sudo apt-get install -y emacs
+      - run:
+          name: Tangle code
+          command: |
+            emacs -Q index.org --batch --eval '(org-babel-tangle-file "README.org")' --kill
+      - run:
+          name: Check config
+          command: |
+            touch fake.pem
+            mv test_secrets.yaml secrets.yaml
+            python3.6 -m venv .
+            source bin/activate
+            pip3 install --pre --upgrade homeassistant
+            hass -c . --script check_config --info all
