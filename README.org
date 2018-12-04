@@ -57,15 +57,11 @@ cloud:
 #+END_SRC
 ** UI
 #+BEGIN_SRC yaml :tangle configuration.yaml
-# Show links to resources in log and frontend
-introduction:
-
 # Enables the frontend
 frontend:
 
 # Enables configuration UI
 config:
-
 #+END_SRC
 ** Sensors
 #+BEGIN_SRC yaml :tangle configuration.yaml
