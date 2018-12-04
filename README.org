@@ -82,6 +82,22 @@ emulated_hue:
   exposed_domains:
     - light
 #+END_SRC
+*** webOS
+First, enable Wake On LAN:
+#+BEGIN_SRC yaml :tangle configuration.yaml
+wake_on_lan:
+
+#+END_SRC
+Then setup the TV:
+#+BEGIN_SRC yaml :tangle configuration.yaml
+media_player:
+  - platform: webostv
+    host: !secret media_player_webostv_host
+    turn_on_activation:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: !secret media_player_webostv_mac
+#+END_SRC
 ** Groups
 *** Setup
 #+BEGIN_SRC yaml :tangle configuration.yaml

@@ -1,10 +1,10 @@
 homeassistant:
   name: Home
-  latitude: 0
-  longitude: 0
-  elevation: 0
+  latitude: !secret ha_latitude
+  longitude: !secret ha_longitude
+  elevation: !secret ha_elevation
   unit_system: metric
-  time_zone: UTC
+  time_zone: !secret ha_time_zone
   customize: !include customize.yaml
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -46,9 +46,6 @@ tts:
 # Cloud
 cloud:
 
-# Show links to resources in log and frontend
-introduction:
-
 # Enables the frontend
 frontend:
 
@@ -65,6 +62,16 @@ homekit:
 emulated_hue:
   exposed_domains:
     - light
+
+wake_on_lan:
+
+media_player:
+  - platform: webostv
+    host: !secret media_player_webostv_host
+    turn_on_activation:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: !secret media_player_webostv_mac
 
 group: !include groups.yaml
 
