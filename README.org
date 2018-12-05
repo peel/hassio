@@ -43,10 +43,9 @@ map:
 # Track the sun
 sun:
 
-
-# Text to speech
 tts:
-  - platform: google
+  - platform: !secret tts_platform
+    language: !secret tts_language
 
 # Cloud
 cloud:
