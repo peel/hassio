@@ -111,6 +111,13 @@ media_player:
       data:
         mac: !secret media_player_tvset_mac
 #+END_SRC
+*** Vacuum
+#+BEGIN_SRC yaml :tangle configuration.yaml
+vacuum:
+  - platform: !secret vacuum_platform
+    host: !secret vacuum_host
+    token: !secret vacuum_token
+#+END_SRC
 ** Groups
 *** Setup
 #+BEGIN_SRC yaml :tangle configuration.yaml
