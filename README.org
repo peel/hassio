@@ -83,12 +83,17 @@ Hey, Siri...
 #+BEGIN_SRC yaml :tangle configuration.yaml
 homekit:
 #+END_SRC
-*** Yeelight
-To make Yeelight work with Harmony Hub we need to make it discoverable as it was a Phillips Hue, therefore an [[https://www.home-assistant.io/components/emulated_hue/][emulated_hue]] component is setup.
+*** Light
+To make non-Hue lights work with Harmony Hub we need to make it discoverable as it was a Phillips Hue, therefore an [[https://www.home-assistant.io/components/emulated_hue/][emulated_hue]] component is setup.
 #+BEGIN_SRC yaml :tangle configuration.yaml
 emulated_hue:
   exposed_domains:
     - light
+#+END_SRC
+#+BEGIN_SRC yaml :tangle configuration.yaml
+light:
+  - platform: !secret lights_1_platform
+    devices: !secret lights_1_devices
 #+END_SRC
 *** TV
 First, enable Wake On LAN:
