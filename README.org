@@ -1,6 +1,5 @@
 * Home Assistant config
-[[https://circleci.com/gh/peel/hassio/tree/master.svg?style=svg&circle-token=46adcbd6e37668b25a4e34e216e549e156c51363]]
-Some configuration is done through secrets.yaml that is not public 
+[[https://circleci.com/gh/peel/hassio][Build]] status: [[https://circleci.com/gh/peel/hassio/tree/master.svg?style=svg&circle-token=46adcbd6e37668b25a4e34e216e549e156c51363]]
 ** Initial setup
 #+BEGIN_SRC yaml :tangle configuration.yaml
 homeassistant:
@@ -143,6 +142,11 @@ script: !include scripts.yaml
 *** Config
 #+BEGIN_SRC yaml :tangle scripts.yaml
 
+#+END_SRC
+** Clients
+Setup iOS integration to load by default even upon restarting Home Assistant:
+#+BEGIN_SRC yaml :tangle configuration.yaml
+ios:
 #+END_SRC
 ** Deployment
 I prefer to deploy after a successful build, hence a script for doing so:
