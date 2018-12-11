@@ -62,6 +62,9 @@ frontend:
 # Enables configuration UI
 config:
 #+END_SRC
+And the experimental Lovelace UI:
+#+BEGIN_SRC yaml :tangle ui-lovelace.yaml
+#+END_SRC
 ** Sensors
 #+BEGIN_SRC yaml :tangle configuration.yaml
 # Sensors
@@ -77,10 +80,17 @@ device_tracker:
     password: !secret device_tracker_password
     port: !secret device_tracker_port
 #+END_SRC
+Now, the important devices:
+#+BEGIN_SRC yaml :tangle known_devices.yaml
+#+END_SRC
 *** HomeKit
 Hey, Siri...
 #+BEGIN_SRC yaml :tangle configuration.yaml
 homekit:
+  filter:
+    include_domains:
+      - light
+      - media_player
 #+END_SRC
 *** Light
 To make non-Hue lights work with Harmony Hub we need to make it discoverable as it was a Phillips Hue, therefore an [[https://www.home-assistant.io/components/emulated_hue/][emulated_hue]] component is setup.
@@ -88,11 +98,6 @@ To make non-Hue lights work with Harmony Hub we need to make it discoverable as 
 emulated_hue:
   exposed_domains:
     - light
-#+END_SRC
-#+BEGIN_SRC yaml :tangle configuration.yaml
-light:
-  - platform: !secret lights_1_platform
-    devices: !secret lights_1_devices
 #+END_SRC
 *** TV
 First, enable Wake On LAN:
