@@ -80,9 +80,6 @@ device_tracker:
     password: !secret device_tracker_password
     port: !secret device_tracker_port
 #+END_SRC
-Now, the important devices:
-#+BEGIN_SRC yaml :tangle known_devices.yaml
-#+END_SRC
 *** HomeKit
 Hey, Siri...
 #+BEGIN_SRC yaml :tangle configuration.yaml
@@ -152,9 +149,4 @@ script: !include scripts.yaml
 Setup iOS integration to load by default even upon restarting Home Assistant:
 #+BEGIN_SRC yaml :tangle configuration.yaml
 ios:
-#+END_SRC
-** Deployment
-I prefer to deploy after a successful build, hence a script for doing so:
-#+BEGIN_SRC shell
-
 #+END_SRC
