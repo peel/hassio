@@ -26,6 +26,10 @@ updater:
 
 # Discover some devices automatically
 discovery:
+  enable:
+    - homekit
+  ignore:
+    - !secret lights_1_platform
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -90,6 +94,11 @@ homekit:
       - media_player
 #+END_SRC
 *** Light
+#+BEGIN_SRC yaml :tangle configuration.yaml
+light:
+  - platform: !secret lights_1_platform
+    devices: !secret lights_1_devices
+#+END_SRC
 To make non-Hue lights work with Harmony Hub we need to make it discoverable as it was a Phillips Hue, therefore an [[https://www.home-assistant.io/components/emulated_hue/][emulated_hue]] component is setup.
 #+BEGIN_SRC yaml :tangle configuration.yaml
 emulated_hue:
