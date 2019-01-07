@@ -10,10 +10,8 @@ homeassistant:
   unit_system: metric
   time_zone: !secret ha_time_zone
   customize: !include customize.yaml
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
+  auth_mfa_modules:
+    - type: totp
 
 # Checks for available updates
 # Note: This component will send some information about your system to
