@@ -82,14 +82,23 @@ device_tracker:
     password: !secret device_tracker_password
     port: !secret device_tracker_port
 #+END_SRC
+*** MQTT
+Configures
+#+BEGIN_SRC yaml :tangle configuration.yaml
+mqtt:
+ discovery: true
+ broker: localhost
+ birth_message:
+   topic: 'hass/status'
+   payload: 'online'
+ will_message:
+   topic: 'hass/status'
+   payload: 'offline'
+#+END_SRC
 *** HomeKit
 Hey, Siri...
 #+BEGIN_SRC yaml :tangle configuration.yaml
 homekit:
-  filter:
-    include_domains:
-      - light
-      - media_player
 #+END_SRC
 *** Light
 #+BEGIN_SRC yaml :tangle configuration.yaml
